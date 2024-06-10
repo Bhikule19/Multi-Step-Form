@@ -1,0 +1,647 @@
+:root {
+  --Marine-blue: hsl(213, 96%, 18%);
+  --Purplish-blue: hsl(243, 100%, 62%);
+  --Pastel-blue: hsl(228, 100%, 84%);
+  --Light-blue: hsl(206, 94%, 87%);
+  --Strawberry-red: hsl(354, 84%, 57%);
+
+  --Cool-gray: hsl(231, 11%, 63%);
+  --Light-gray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --White: hsl(0, 0%, 100%);
+}
+
+@font-face {
+  font-family: Ubuntu;
+  src: url(./assets/fonts/Ubuntu-Regular.ttf);
+}
+
+/* -----------------------CSS Reset---------------------- */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* -----------------------CSS for Project ---------------------------- */
+
+* {
+  box-sizing: border-box;
+  font-family: Ubuntu;
+  padding: 0;
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+img {
+  max-width: 100%;
+}
+body {
+  background-color: var(--Magnolia);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.form {
+  width: 900px;
+  background-color: var(--White);
+  border-radius: 1rem;
+  box-shadow: 4px 6px 20px 1px #00000033;
+}
+.form-container {
+  display: flex;
+  padding: 1rem;
+}
+.form-sidebar {
+  background-image: url("./assets/images/bg-sidebar-desktop.svg");
+  background-repeat: no-repeat;
+  width: 400px;
+  height: 568px;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.circle {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--White);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--White);
+  font-weight: 700;
+}
+.active .circle {
+  background-color: var(--Light-blue) !important;
+  color: var(--Marine-blue) !important;
+  border: transparent;
+}
+.err {
+  border: 2px solid var(--Strawberry-red) !important;
+}
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.step-content span {
+  text-transform: uppercase;
+  color: var(--Light-gray);
+  font-size: 13px;
+}
+.step-content b {
+  text-transform: uppercase;
+  color: var(--White);
+}
+.stp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-inline: 4rem;
+}
+.stp .header {
+  margin-bottom: auto;
+  padding-top: 2rem;
+  line-height: 2.5rem;
+}
+.header .title {
+  color: var(--Marine-blue);
+}
+.header .exp {
+  color: var(--Cool-gray);
+}
+.next-stp {
+  margin-top: auto;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 7px;
+  background-color: var(--Marine-blue);
+  color: white;
+  cursor: pointer;
+}
+/* STEP 1 */
+.step-1 {
+  display: flex;
+  width: 90%;
+}
+.step-1 form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  gap: 1rem;
+}
+.label {
+  color: var(--Marine-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.step-1 form input {
+  padding: 1rem;
+  border: 1px solid var(--Cool-gray);
+  border-radius: 7px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--Marine-blue);
+}
+.step-1 form input:focus {
+  outline-color: var(--Purplish-blue);
+}
+form input::placeholder {
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: inherit;
+}
+form .error {
+  display: none;
+  color: var(--Strawberry-red);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+/* STEP 2 */
+.step-2 {
+  display: none;
+  width: 90%;
+}
+.step-2 form {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 2rem;
+}
+.plan-card {
+  border: 2px solid var(--Light-gray);
+  border-radius: 7px;
+  width: 150px;
+  height: 170px;
+  cursor: pointer;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.plan-card:hover {
+  border: 2px solid var(--Purplish-blue);
+}
+
+.plan-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.plan-info b {
+  color: var(--Marine-blue);
+}
+.plan-info span {
+  color: var(--Cool-gray);
+}
+.monthly,
+.yearly {
+  color: var(--Cool-gray);
+  font-weight: 500;
+}
+.sw-active {
+  color: var(--Marine-blue);
+}
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.prev-stp {
+  margin-top: auto;
+  margin-bottom: 2rem;
+  border: none;
+  font-weight: 700;
+  background-color: transparent;
+  padding: 1rem 2rem;
+  border-radius: 7px;
+  color: var(--Cool-gray);
+  cursor: pointer;
+}
+
+.prev-stp:hover {
+  color: var(--Marine-blue);
+}
+
+/* STEP 3 */
+.step-3 {
+  display: none;
+  width: 80%;
+}
+.step-3 form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.box {
+  border: 1px solid var(--Cool-gray);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.box:hover {
+  border: 1px solid var(--Purplish-blue);
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-left: 12px;
+}
+.price {
+  margin-left: auto;
+}
+.ad-selected {
+  border: 1px solid var(--Purplish-blue);
+  background-color: var(--Magnolia);
+}
+.step-3 form input {
+  accent-color: var(--Purplish-blue);
+  color: var(--Marine-blue);
+  transform: scale(1.3);
+  -webkit-user-select: none;
+  user-select: none;
+}
+.description label {
+  color: var(--Marine-blue);
+  font-weight: 700;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.description small {
+  color: var(--Cool-gray);
+  font-weight: 700;
+}
+.price {
+  color: var(--Purplish-blue);
+}
+/* STEP 4 */
+.step-4 {
+  display: none;
+  width: 80%;
+}
+.selection-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+.selection-container {
+  background-color: var(--Magnolia);
+  padding: 1.5rem;
+}
+.selected {
+  border: 2px solid var(--Purplish-blue);
+  background-color: var(--Magnolia);
+}
+.selected-plan {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  color: var(--Marine-blue);
+  font-weight: 700;
+}
+
+.plan-change {
+  border-bottom: 2px solid var(--Cool-gray);
+  color: var(--Cool-gray);
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.plan-change:hover {
+  color: var(--Purplish-blue);
+  border-bottom: 2px solid var(--Purplish-blue);
+}
+
+.selected-addon {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  color: var(--Cool-gray);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.selected-addon .servic-price {
+  color: var(--Marine-blue);
+}
+.total {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--Cool-gray);
+}
+.total b {
+  color: var(--Purplish-blue);
+  font-size: 1.2rem;
+}
+
+.next-stp.confirm {
+  background-color: var(--Purplish-blue);
+  color: var(--White);
+}
+
+.next-stp.confirm:hover {
+  opacity: 0.5;
+}
+
+/* step 5 */
+.step-5 {
+  display: none;
+  align-items: center;
+  width: 90%;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+}
+.step-5 button {
+  display: none;
+}
+/* SWITCH classes */
+.switcher {
+  background-color: var(--Magnolia);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  margin-bottom: 5rem;
+  justify-content: center;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--Marine-blue);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* ----------------- Responsice Layout ------------------------ */
+@media screen and (max-width: 450px) {
+  body {
+    position: relative;
+  }
+  .form-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background-image: url("./assets/images/bg-sidebar-mobile.svg");
+    flex-direction: row;
+    height: 200px;
+    gap: 1rem;
+    background-size: contain;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: -1;
+  }
+
+  .circle {
+    width: 35px;
+    height: 35px;
+  }
+
+  .step-content {
+    display: none;
+  }
+  .form {
+    position: absolute;
+    top: 15%;
+    max-width: 350px;
+    height: 70%;
+    background-color: white;
+  }
+  .form-container {
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 26px;
+    font-weight: 700;
+  }
+  .btns {
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    right: 0;
+    left: 0;
+    height: 65px;
+    padding-inline: 1rem;
+  }
+
+  .next-stp {
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .prev-stp {
+    padding-inline: 0;
+  }
+
+  .stp {
+    padding-inline: 0;
+  }
+
+  .step-1 form {
+    gap: 0;
+  }
+
+  .step-1 form .label > * {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .step-1 form input {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .step-1 .btns button {
+    margin: auto 0 auto auto;
+  }
+  .step-2 form {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .step-3 form {
+    gap: 1rem;
+  }
+
+  .plan-card {
+    width: 100%;
+    height: 70px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+    align-items: center;
+  }
+  .stp {
+    gap: 1rem;
+    width: 100%;
+  }
+  .stp .header {
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    line-height: 1.5rem;
+  }
+  .switcher {
+    border-radius: 0.5rem;
+  }
+
+  .box {
+    padding: 1rem;
+    font-size: 14px;
+  }
+
+  .box .description {
+    gap: 0;
+  }
+
+  .selected-addon {
+    padding-bottom: 0;
+  }
+}
